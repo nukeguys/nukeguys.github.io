@@ -1,4 +1,93 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[nukeguys blog]]></title><description><![CDATA[about development, life and something.]]></description><link>https://nukeguys.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 06 Feb 2019 15:02:56 GMT</lastBuildDate><item><title><![CDATA[말하는 대로 기록하는 대로, 2019년 목표]]></title><description><![CDATA[블로그를 만들어서 회고를 먼저 작성하고 싶었으나 늦어지는 바람에 건너 뛰었고, 새해 목표도 미루다 이제서야 정리를 한 번 해본다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[nukeguys blog]]></title><description><![CDATA[about development, life and something.]]></description><link>https://nukeguys.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 11 Feb 2019 15:47:20 GMT</lastBuildDate><item><title><![CDATA[[번역] TypeScript의 Do's and Don'ts]]></title><description><![CDATA[Do’s and Don’ts General Types Number, String, Boolean, and Oject Don’t 
+ Number ,  String ,  Boolean  또는  Object…]]></description><link>https://nukeguys.github.io//dev/ts-do-and-dont/</link><guid isPermaLink="false">https://nukeguys.github.io//dev/ts-do-and-dont/</guid><pubDate>Mon, 11 Feb 2019 13:52:55 GMT</pubDate><content:encoded>&lt;h1&gt;Do’s and Don’ts&lt;/h1&gt;
+&lt;h2&gt;General Types&lt;/h2&gt;
+&lt;h3&gt;Number, String, Boolean, and Oject&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Don’t&lt;/em&gt;&lt;/strong&gt;
+&lt;code&gt;Number&lt;/code&gt;, &lt;code&gt;String&lt;/code&gt;, &lt;code&gt;Boolean&lt;/code&gt; 또는 &lt;code&gt;Object&lt;/code&gt; 타입을 절대 사용하지 마라. 이 타입들은 JavaScript 코드에서 대부분 적절하지 않게 사용되는 non-primitive boxed object&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;들을 의미한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* WRONG */
+function reverse(s: String): String;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Do&lt;/em&gt;&lt;/strong&gt;
+&lt;code&gt;number&lt;/code&gt;, &lt;code&gt;string&lt;/code&gt; 그리고 &lt;code&gt;boolean&lt;/code&gt;을 사용하라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;function reverse(s: string): string;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;Object&lt;/code&gt; 대신 non-primitive인 &lt;code&gt;object&lt;/code&gt; 타입을 사용하라 (&lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type&quot;&gt;TypeScript 2.2&lt;/a&gt;에 추가됨).&lt;/p&gt;
+&lt;h4&gt;Generic&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Don’t&lt;/em&gt;&lt;/strong&gt;
+타입 매개변수를 사용하지 않는 generic 타입을 사용하지 마라. 더 자세한 내용은 &lt;a href=&quot;https://github.com/Microsoft/TypeScript/wiki/FAQ#why-doesnt-type-inference-work-on-this-interface-interface-foot---&quot;&gt;TypeScript FAQ page&lt;/a&gt;에서 확인.&lt;sup id=&quot;fnref-2&quot;&gt;&lt;a href=&quot;#fn-2&quot; class=&quot;footnote-ref&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2&gt;Callback Types&lt;/h2&gt;
+&lt;h3&gt;Return Types of Callbacks&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Don’t&lt;/em&gt;&lt;/strong&gt;
+값이 무시될 콜백의 리턴타입으로 &lt;code&gt;any&lt;/code&gt;를 사용하지 마라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* WRONG */
+function fn(x: () =&amp;gt; any) {
+  x();
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Do&lt;/em&gt;&lt;/strong&gt;
+값이 무시될 콜백의 리턴타입으로 &lt;code&gt;void&lt;/code&gt;를 사용하라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* OK */
+function fn(x: () =&amp;gt; void) {
+  x();
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Why&lt;/em&gt;&lt;/strong&gt;
+확인되지 않는 방법으로 &lt;code&gt;x&lt;/code&gt;의 리턴타입을 사용하는 실수를 방지해주기 때문에 &lt;code&gt;void&lt;/code&gt;를 사용하는 것이 더 안전하다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;function fn(x: () =&amp;gt; void) {
+  var k = x(); // oops! meant to do something else
+  k.doSomething(); // error, but would be OK if the return type had been &amp;#39;any&amp;#39;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Optional Paameters in Callbacks&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Don’t&lt;/em&gt;&lt;/strong&gt;
+의도한 경우를 제외하고는 선택적 매개변수를 사용하지 마라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* WRONG */
+interface Fetcher {
+  getObject(done: (data: any, elapsedTime?: number) =&amp;gt; void): void;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이것은 매우 분명한 의미를 갖는다. : &lt;code&gt;done&lt;/code&gt; 콜백은 1개 또는 2개의 매개변수를 가지고 호출된다. 작성자는 아마 콜백이 &lt;code&gt;elapsedTime&lt;/code&gt; 매개변수에 대해 신경쓰지 않는다는 것을 의도했을 것이다. 그러나 그것을 위해 선택적 매개변수로 만들 필요는 없다. - 더 적은 매개변수를 받는 콜백을 전달하는 것은 언제나 적합하다.&lt;sup id=&quot;fnref-3&quot;&gt;&lt;a href=&quot;#fn-3&quot; class=&quot;footnote-ref&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Do&lt;/em&gt;&lt;/strong&gt;
+콜백의 파라미터를 필수(non-optional) 파라미터로 작성하라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* OK */
+interface Fetcher {
+  getObject(done: (data: any, elapsedTime: number) =&amp;gt; void): void;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Overloads and Callbacks&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Don’t&lt;/em&gt;&lt;/strong&gt;
+콜백만 다른 별도의 타입 시그니처(overload)를 작성하지 마라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* WRONG */
+declare function beforeAll(action: () =&amp;gt; void, timeout?: number): void;
+declare function beforeAll(
+  action: (done: DoneFn) =&amp;gt; void,
+  timeout?: number
+): void;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Do&lt;/em&gt;&lt;/strong&gt;
+모든 것을 포함하는 타입 시그니처 하나만 작성하라.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;/* OK */
+declare function beforeAll(
+  action: (done: DoneFn) =&amp;gt; void,
+  timeout?: number
+): void;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Why&lt;/em&gt;&lt;/strong&gt;
+콜백에서 매개변수를 무시하는 것은 언제나 적합하다.(역자:&lt;sup id=&quot;fnref-3&quot;&gt;&lt;a href=&quot;#fn-3&quot; class=&quot;footnote-ref&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;과 같은 의미이다.) 따라서 더 간단한 타입 시그니처는 필요하지 않다. 간단한 타입 시그니처를 제공하는 것은 타입이 잘못된 함수가 첫번째 함수 시그니처와 매칭되어 전달되는 것을 허용한다.&lt;sup id=&quot;fnref-4&quot;&gt;&lt;a href=&quot;#fn-4&quot; class=&quot;footnote-ref&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3&gt;Function Overloads&lt;/h3&gt;
+&lt;p&gt;작성 중&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;primitive타입이 아닌 boxing된 object형 타입. 따라서 &lt;code&gt;Numer.MAX_VALUE&lt;/code&gt;나 &lt;code&gt;Number.isSafeInteger()&lt;/code&gt;등으로 사용가능하다.&lt;/p&gt;
+&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;generic으로 선언하고 내부에서 사용하지 않는 경우를 만들지 말라는 의미로, FAQ 페이지를 보면 해당 타입 매개변수를 사용하는 부분이 없으면 타입추론이 제대로 이루어지지 않는다고 한다.&lt;/p&gt;
+&lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;매개변수의 개수에 대한 함수의 타입 호환성에서 할당받는 함수의 매개변수가 더 많은 경우는 호환이 가능하기 때문이다. 자주 사용하는 &lt;code&gt;map()&lt;/code&gt;,&lt;code&gt;filter()&lt;/code&gt; 같은 함수에 매개변수 하나만 사용하는 콜백을 넘기는 경우를 생각하면 쉽다.&lt;/p&gt;
+&lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;호출하는 쪽에서는 항상 정해진 수의 매개변수를 전달하고 콜백에서 필요한 만큼만 받아서 사용해야 하는데, 매개변수 개수가 적은 시그니처가 있으면 호출하는 쪽에서 매개변수를 적게 전달하는 실수가 허용된다.&lt;/p&gt;
+&lt;a href=&quot;#fnref-4&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[javascript에서 switch문 제거하기]]></title><description><![CDATA[https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d]]></description><link>https://nukeguys.github.io//dev/eliminate-switch-in-js/</link><guid isPermaLink="false">https://nukeguys.github.io//dev/eliminate-switch-in-js/</guid><pubDate>Sun, 10 Feb 2019 02:58:09 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d&quot;&gt;https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[말하는 대로 기록하는 대로, 2019년 목표]]></title><description><![CDATA[블로그를 만들어서 회고를 먼저 작성하고 싶었으나 늦어지는 바람에 건너 뛰었고, 새해 목표도 미루다 이제서야 정리를 한 번 해본다.
 정말 다사다난 했던 201…]]></description><link>https://nukeguys.github.io//life/2019-as-what-i-say/</link><guid isPermaLink="false">https://nukeguys.github.io//life/2019-as-what-i-say/</guid><pubDate>Wed, 06 Feb 2019 10:30:25 GMT</pubDate><content:encoded>&lt;p&gt;블로그를 만들어서 회고를 먼저 작성하고 싶었으나 늦어지는 바람에 건너 뛰었고, 새해 목표도 미루다 이제서야 정리를 한 번 해본다.
 정말 다사다난 했던 2018년 회고를 했으면 무슨 내용이 있었을까 싶지만 기록으로 남기지 않는 편이 좋은 것 같기도 하고…&lt;/p&gt;
 &lt;p&gt;정작 조금만 지나면 잊어 버리고 일 년을 보내지만 매년 해가 바뀔 때 마다 큼직한 목표들을 세운다.
