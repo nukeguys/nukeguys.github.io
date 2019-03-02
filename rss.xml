@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[nukeguys blog]]></title><description><![CDATA[about development, life and something.]]></description><link>https://nukeguys.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 13 Feb 2019 15:02:53 GMT</lastBuildDate><item><title><![CDATA[[번역] TypeScript의 Do's and Don'ts]]></title><description><![CDATA[Do’s and Don’ts General Types Number, String, Boolean, and Oject Don’t 
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[nukeguys blog]]></title><description><![CDATA[about development, life and something.]]></description><link>https://nukeguys.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Sat, 02 Mar 2019 15:08:31 GMT</lastBuildDate><item><title><![CDATA[나는 달린다.]]></title><description><![CDATA[몇 달 전부터 준비하던 마라톤이 드디어 다가왔다. 피로는 좀 쌓여있었지만, 컨디션을 좋게 유지하기 위해 들었던 팁에 따라 전날 혼자 스파게티도 먹고 당일 아침엔 일어나자마자 에너지바와 포카리로 에너지를 미리 채웠다. 소집은…]]></description><link>https://nukeguys.github.io//life/i-run/</link><guid isPermaLink="false">https://nukeguys.github.io//life/i-run/</guid><pubDate>Sat, 02 Mar 2019 13:27:29 GMT</pubDate><content:encoded>&lt;p&gt;몇 달 전부터 준비하던 마라톤이 드디어 다가왔다.&lt;br&gt;
+피로는 좀 쌓여있었지만, 컨디션을 좋게 유지하기 위해 들었던 팁에 따라 전날 혼자 스파게티도 먹고 당일 아침엔 일어나자마자 에너지바와 포카리로 에너지를 미리 채웠다.&lt;br&gt;
+소집은 8시 였으나 행사 시간을 고려하고 날도 쌀쌀했기 때문에 어느정도 여유를 갖고 출발했다.&lt;br&gt;
+도착해서 주변을 보니 참가자들이 엄청 많았고, 첫 참가라 그런지 살짝 들뜬 마음으로 동료들과 시작을 기다렸다.
+순서대로 출발을 하는데 참가자에 비해 출발선이 비좁았고 통제가 잘 되지 않아서 인지 너무 혼잡했다.&lt;br&gt;
+그래서 이미 출발 했어야 할 하프 주자들이 10km 출발 전에 비집고 들어와서 뛰기도 했는데 좀 더 신경을 써줬으면 좋겠다 싶었다.&lt;/p&gt;
+&lt;p&gt;드디어 출발, 참가자가 가장 많은 코스인 만큼 출발이 쉽지가 않았다. 사방이 사람이라 피해서 나가느라 초반엔 좀 정신이 없기도 했다.&lt;br&gt;
+폰도 두고 뛰었고 스포츠 워치도 없어서 페이스를 알 수가 없어 초반에는 동료들과 속도를 맞춰서 적당히 따라갔다.&lt;br&gt;
+그러다 초반 3km 정도가 지나면서는 내 페이스를 잡아보려고 앞만 보고 속도를 조금 올려서 뛰기 시작했다. 아마 페이스를 알 수 있었으면 평소보다 빠르구나 싶어서 조절을 했을 수도 있을 것 같은데 느낌상으로만 뛰다보니 연습 때 속도로 뛰어도 실제 체감으로는 느리게 느껴졌다. 아마 기록이 예상보다 잘 나온 이유가 이래서이지 싶다.&lt;/p&gt;
+&lt;p&gt;4km 이정표가 보이면서 이미 반환하고 6km를 뛰고 있는 선두 주자가 보였다. 이미 그만큼이나 뛰었는데도 엄청난 속도로 달려오고 있었다. 오히려 워낙 넘사벽이라 뭐 잘 뛰는구나 생각하고 그냥 지나쳤다.&lt;/p&gt;
+&lt;p&gt;5km가 근접해 오면서 실제로 10km를 완주해 본 적이 없기 때문에 후반부에 체력이 떨어지는 상황에 걱정이 많이 됬었다. 그래서 나름 적당히 힘든 만큼만 유지하면서 반환점을 지나고 혼자 머릿속으로 마지막 2~3km에 속도를 내자 생각하고 달렸다.
+개인적으로는 ‘습습후후’하고 끊어서 쉴 수 있으면 아직은 여유가 있는 시점인 듯 했다. 그러다 조금씩 힘이 들면 들숨의 간격이 모호해지고 결국은 ‘습~후후’나 ‘습~후~‘가 되는 것 같다. 그래서 중반까지는 습습후후를 유지할 만큼만 페이스를 유지했다.&lt;/p&gt;
+&lt;p&gt;6km를 지나면서 부터는 힘들다는 생각이 들기 시작했다. 주변에 같이 달리는 사람들도 지친 모습이 조금씩 보이기 시작했고 이 와중에 속도를 내는 사람들도 있었다. 속도를 내기엔 아직 아닌 것 같아 느려지지만 말자는 생각으로 앞사람들을 따라갔다.&lt;/p&gt;
+&lt;p&gt;어느정도 지나고 종합운동장이 보였고 완주는 하겠구나 싶었는데 남은 거리가 가늠이 되지 않았다. 속도를 내고 싶지만 숨은 차고 잘못하면 막판에 쳐질 것 같았다. 그러다 마침 앞에 뛰는 한 여성분이 적당히 비슷한 속도로 달리고 있었다. 그래서 따라가다 후반에 잡아보자는 생각으로 바짝 붙어 뛰었다. 그러다 서로 의식이 된건지 몇 번을 서로 앞으로 치고 나가기도 했다.&lt;/p&gt;
+&lt;p&gt;그렇게 달리다 보니 운동장쪽으로 진입하는 터널이 보였다. 지나면 운동장이 바로 나오는 줄 알고 착각해서 잠시 속도를 올렸는데 아직 좀 남아있는데다 심장이 무리가 가는게 느껴져서 다시 속도를 늦췄다. 아직 다리는 멀쩡한데 더 빨리 뛸 수 없는게 좀 아쉬웠다.
+그리고 좀 지나니 정말 운동장 입구가 보였고 입구를 지나치고 결승선이 보이자 마자 미친 듯이 달렸다. 그 때 따라잡은 사람들이 5~6명은 되는 것 같다. 한 분은 정말 쓰러지기 직전 모습으로 들어가고 있어서 안타깝기도 했지만 빠르게 옆을 지나쳐서 들어갔다.&lt;/p&gt;
+&lt;p&gt;결승선을 통과하자 기록측정 소리가 삐하고 들렸고 바로 주저 앉아서 시계를 돌아봤다. 그 때가 아마 49분이 살짝 넘었던 것 같다. 그래서 조금만 더 뛰어서 48분대로 들어올 걸 아쉬운 마음으로 기록증을 받았는데, 기록은 출발선을 통과한 시점부터 측정이 되는지라 시계보다는 좀 더 빠르게 나왔고 최종기록은 48분 24초로 되어 있었다. 동료들과 얘기했던 55분 목표와 준비하면서 개인적으로 세웠던 50분 목표를 달성해서 만족스러우면서도 한편으로는 조금 만 더… 라는 아쉬움도 살짝 남았었다. 이 아쉬움이 다음 마라톤을 참가하게 되는 계기가 되지 않을까 싶다.&lt;/p&gt;
+&lt;p&gt;이번 생에 첫 마라톤을 참가하면서 놀랐던 것은 생각보다 마라톤에 참가하는 사람들이 많다는 것, 그리고 잘 달리는 사람들도 많은데 그 중에 여자들의 비중이 적지 않다는 사실에 두번 놀랐다. 83세에 풀코스를 매 주 달리는 할아버지도 계시다고 하니 대단한 일이다.&lt;/p&gt;
+&lt;p&gt;나름 준비한다고 매주 연습도하고 했는데 처음 치고는 결과도 만족스러워서 다행이기도 하고, 한 편으로는 연습 때 마다 느꼈지만 다리는 더 달릴 수 있는 상태였는데 그러지 못한게 아쉬웠다. 20대에는 다리가 저릴 때까지 뛰어 다녀도 그런 적은 없었는데… 헬스장 다니면서 다리 근력운동은 병행 했는데 너무 오랫동안 운동을 쉰 탓에 심폐지구력은 많이 떨어진 것 같다. 오랜만에 달리는 맛을 느껴봤고 마라톤에 대한 흥미도 생긴만큼 올해 목표는 10km 2번 참가였지만, 매달은 아니더라도 격달로라도 참가해 볼까 싶다. (이번 대회 100위가 43분인가 45분인가 였던 것 같은데 올 해 안에 45분을 목표로)&lt;/p&gt;
+&lt;p&gt;그래서 앞으로도 나는 달릴 예정이다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[번역] TypeScript의 Do's and Don'ts]]></title><description><![CDATA[Do’s and Don’ts General Types Number, String, Boolean, and Oject Don’t 
  Number ,  String ,  Boolean  또는  Object…]]></description><link>https://nukeguys.github.io//dev/ts-do-and-dont/</link><guid isPermaLink="false">https://nukeguys.github.io//dev/ts-do-and-dont/</guid><pubDate>Mon, 11 Feb 2019 13:52:55 GMT</pubDate><content:encoded>&lt;h1&gt;Do’s and Don’ts&lt;/h1&gt;
 &lt;h2&gt;General Types&lt;/h2&gt;
 &lt;h3&gt;Number, String, Boolean, and Oject&lt;/h3&gt;
@@ -187,7 +206,7 @@ function fn(x: number | string) {
 공부 - 주1회 블로그 포스팅, 월 1권 독서, 개발 공부&lt;br&gt;
 기타 - 취미 1개, 카카오페이지 월 1작품 보기, vim 익히기&lt;/p&gt;
 &lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[우리는 달빛에도 걸을 수 있다.]]></title><description><![CDATA[…]]></description><link>https://nukeguys.github.io//book/moonlight-1195538227/</link><guid isPermaLink="false">https://nukeguys.github.io//book/moonlight-1195538227/</guid><pubDate>Sun, 27 Jan 2019 03:15:44 GMT</pubDate><content:encoded>&lt;p&gt;읽기 시작한 지 거의 두 달이 넘어서 마지막 장을 덮었다. &lt;a href=&quot;https://brunch.co.kr/@daljasee#articles&quot;&gt;브런치&lt;/a&gt;에서 우연히 보게 된 작가의 글이 좋아 구독을 시작했다. 그러다 책이 출간했다는 소식을 접하고 얼마 후 서점에 들렀다.&lt;/p&gt;
-&lt;p&gt;내가 한 때 많이 읽던 자기개발서들을 보지 않은게 된건 언제부턴가 강요스럽고 상업적인 느낌을 받으면서 부터다. 뻔한 내용들로 성공한 사람들은 이렇게 살았으니 너희들도 이렇게 살아야 한다고 말하는 것 같았다. 그리고 이후엔 그냥 에세이 같은 글들이 좋았다. 주로 책보다는 블로그나 브런치를 통해 그런 짤막한 글 들을 읽었다.&lt;/p&gt;
+&lt;p&gt;내가 한 때 많이 읽던 자기개발서들을 보지 않게 된건 언제부턴가 강요스럽고 상업적인 느낌을 받으면서 부터다. 뻔한 내용들로 성공한 사람들은 이렇게 살았으니 너희들도 이렇게 살아야 한다고 말하는 것 같았다. 그리고 이후엔 그냥 에세이 같은 글들이 좋았다. 주로 책보다는 블로그나 브런치를 통해 그런 짤막한 글 들을 읽었다.&lt;/p&gt;
 &lt;p&gt;나와 별반 다르지 않은 주변의 사소하고도 평범한 일상, 그리고 그에 대한 작가만의 느낌이나 생각. 무언가를 기억하려고도 머릿속에 담으려 하지 않아도 되고 읽는 순간 순간 떠오르는 생각과 느낌을 공감하고 받아들이면 충분했다.&lt;/p&gt;
 &lt;p&gt;이 작가의 글도 그랬다. 읽고 있으면 자연스레 미소가 나기도 슬퍼지기도 했다. 물론 작가가 그래야 한다라기보다 글을 읽으면서 내가 느끼는 자연스런 감정들이었다. 다 읽고나서 뭔가를 배웠습니다하고 정리할 필요 없이 그저 그렇게 책장을 덮으면 그만이나 책의 여운은 남아 기분 좋은 그런 책이었다.&lt;/p&gt;
 &lt;p&gt;책을 덮기 전에 나온 글들을 적어본다.&lt;/p&gt;
