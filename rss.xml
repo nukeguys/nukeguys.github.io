@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[nukeguys blog]]></title><description><![CDATA[about development, life and something.]]></description><link>https://nukeguys.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 06 Oct 2019 14:44:47 GMT</lastBuildDate><item><title><![CDATA[react lazyloading 이미지 컴포넌트 구현하기]]></title><description><![CDATA[…]]></description><link>https://nukeguys.github.io/dev/react-lazyimage/</link><guid isPermaLink="false">https://nukeguys.github.io/dev/react-lazyimage/</guid><pubDate>Sun, 06 Oct 2019 02:39:02 GMT</pubDate><content:encoded>&lt;p&gt;웹의 성능을 올리는 데는 다양한 방법들이 있다. 렌더링을 최적화 하거나 리소스 크기를 최소화 한다. 그리고 가능하다면 리소스의 사용이나 로딩을 필요한 시점까지 연기하거나 비동기로 처리한다. 웹에서 사용하는 리소스들 중 많은 크기를 차지하는 것 중의 하나가 이미지이다. 아무리 최적화를 하고 크기를 줄이더라도 이미지 수가 어느정도 증가하면 로딩에 오랜 시간이 걸릴 수 밖에 없다. 이를 방지하기 위해 ATF&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 영역만 먼저 로딩 하고 나머지는 필요한 시점에 로딩시키는 lazyloading을 많이 사용한다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[nukeguys blog]]></title><description><![CDATA[about development, life and something.]]></description><link>https://nukeguys.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 13 Oct 2019 05:46:49 GMT</lastBuildDate><item><title><![CDATA[클라이밍 기초]]></title><description><![CDATA[…]]></description><link>https://nukeguys.github.io/climbing/climbing-basic/</link><guid isPermaLink="false">https://nukeguys.github.io/climbing/climbing-basic/</guid><pubDate>Sun, 13 Oct 2019 03:25:36 GMT</pubDate><content:encoded>&lt;p&gt;지난 달 부터 클라이밍 강습을 시작했다. 우연히 기회에 체험을 하러 갔던게 계기가 되었다. 처음엔 재미있네 정도 였다가 두번째는 다른 사람들은 되는데 나는 왜 안되지하는 자괴감 + 오기가 합쳐져서 배워보자하고 강습을 끊었다. 그리고 한 달 넘게 꾸준히 해오고 있다. 이젠 기초는 넘어가고 강습도 중급으로 올라가서 어느정도 놀(?) 줄 아는 정도가 됐지만 아직 빵&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 수준이라 한참은 부족하다. 그래도 생각보다 재밌게 하고 있고 앞으로도 꾸준히 하게 될 듯하여 과정들을 기록해 볼까 한다.&lt;/p&gt;
+&lt;p&gt;처음으로 클라이밍에 대한 간단한 설명부터 시작해본다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;클라이밍의 역사&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;요즘엔 실내에서 하는 클라이밍은 공간의 제약 때문에 &lt;code&gt;볼더링&lt;/code&gt;이 대부분이다. 볼더링의 기본적인 룰은 정해진 Start 지점부터 같은 색의 홀드를 잡고 올라가 최종 Top에 두손을 모으는 것이다. 하지만 홀드들이 결코 만만하지 않기 때문에 힘 뿐만 아니라 유연성, 균형감각 무엇보다 길을 찾는 창의력을 요구한다. 그렇기 때문에
+볼더링은 낮은 높이에서 암벽등반을 연습하거나 훈련하는데 사용되었다. 그러다 영국의 존 길(John Gill)이라는 클라이머가 볼더링을 독립된 스포츠로 발전시켰고 1968년 영국의 리즈대학에 최초의 인공 암벽이 세워 진 것이 볼더링의 시작이다.&lt;/p&gt;
+&lt;p&gt;실제 스포츠 클라이밍은 낮은 높이에서 기술을 요하는 &lt;code&gt;볼더링&lt;/code&gt;외에도 일반적으로 떠올리는 장비를 착용하고 줄을 달면서 올라가는 &lt;code&gt;리드&lt;/code&gt;와 누가 더 빠르게 올라가는지르 겨루는 &lt;code&gt;스피드&lt;/code&gt; 총 3종목으로 이루어져 있다.
+정식종목으로 포함된 내년 올림픽에 클라이밍 여제 김자인 선수를 비롯해 사솔, 김자비, 천종원 등 우리나라에도 세계적으로 뛰어난 선수들이 국가대표로 선발되어 있으니 보는 재미가 쏠쏠할 듯 하다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;클라이밍의 매력&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;처음 센터에 갔을 때 생각보다 많은 사람들이 있었다. 남자들 뿐 아니라 여자들도 많고, 심지어 어린 초등학생들도 벽을 타고 있는 모습을 종종 볼 수 있다. 최근에 개봉한 영화 &lt;a href=&quot;https://page.kakao.com/home?seriesId=53616114&quot;&gt;엑시트&lt;/a&gt; 영향이라는 말도 있지만 사실 그 전부터 클라이밍을 즐기는 사람들이 많았다. 클라이밍은 평소와 다른 근육을 써야하고 낮지는 않는 곳에 올라 매달려서 움직여야 하기 때문에 자칫 부상이나 추락의 위험이 있다. 그럼에도 클라이밍을 즐기는 사람들은 중독되다시피 운동을 다닌다. 아마 정해진 답이 없는 자유로움과 완등했을 때 느끼는 쾌감 때문이지 싶다. 안풀리던 문제를 몇번을 도전하다가 처음 정복했을 때의 그 쾌감은 나 또한 잊을 수가 없다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;클라이밍 준비&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;클라이밍은 다른 운동처럼 장비가 딱히 필요하지 않다. 물론 클라이밍화가 필수적으로 필요하긴 하지만 보통 센터에서 대여를 해주기 때문에 할 마음만 있다면 누구나 편한 옷만 챙겨가서 할 수 있다. 초크도 필요하긴 하지만 센터에 있기도 하고 가격도 저렴하기 때문에 부담이 없다. 물론 어느정도 익숙해지면 더 난이도 있는 문제를 풀기위해 신발에 욕심도 나고 동작을 좀 더 편하게 할 수 있도록 만들어진 클라이밍 전용 옷도 고려하게 되기는 한다.&lt;/p&gt;
+&lt;p&gt;그럼 클라이밍을 잘 하기 위해서는 무엇이 필요할까. 도구를 사용하지 않기 때문에 좋은 몸(?)이 무엇보다 중요하다. 처음 접하는 사람들은 팔 힘만 있으면 잘 할 수 있을거라고 생각하는 경향이 있지만 클라이밍은 실제로 전신운동인데다가 팔힘은 한계가 있기 때문에 하체와 코어 근육의 뒷받침이 매우 중요한 운동이다. 물론 팔이나 어깨, 등 근육도 뛰어날 수록 도움이 되는 건 사실이다. 추가로 근력 만큼 필요한게 유연성이다. 이 점 때문에 여자들이 결코 남자들에 비해 뒤쳐지지 않는다. 상대적으로 남자들은 근력이 강하지만 유연성이 부족하기 때문이다.(나도 저주받은 뻗뻗함 때문에 문제가 안풀릴 때는 요가라도 배워볼까 생각했다.) 신기하게도 세계적으로 뛰어난 선수들을 보면 예상외로 말랐다라는 느낌을 받는다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;주의할 점&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;모든 운동이 그렇지만 클라이밍 특히 평소에 하지 않는 자세와 근육들을 쓰기 때문에 몸관리를 잘 해주지 않으면 부상을 입기 쉽상이다. 나 또한 어깨와 팔꿈치로 계속 고생을 하면서 정신차리고 좀 더 준비와 마무리에 신경을 쓰고 있다. 어느정도 오랜 기간 해 온 사람이라면 익숙해져 있겠지만 그렇지 않은 사람들은 준비운동없이 무리하게 근육을 늘리고 뒤틀다 보면 무리가 쉽게 온다. 따라서 시작 전에 전신을 골고루 미리 풀어주는 스트레칭은 필수적이다. 또 몇시간을 매달리고 나면 근육이 손상되고 세포가 파괴된다. 이런 상태를 그대로 두면 계속 진행되면서 회복이 느려지기 때문에 끝난 후에 아이싱을 해줘야 하고, 쿨다운 해주는 스트레칭도 챙겨야 한다.&lt;/p&gt;
+&lt;p&gt;간략하게 기본적인 내용들을 정리해봤다. 모든 운동(운동 뿐만 아니지만)은 기본기와 반복적인 노가다가 중요하다고 생각한다. 하지만 점점 익숙해지고 실력이 올라갈 수록 기본을 잊어버리기 쉽상이다. 그러다 보면 분명 어느순간 한계가 오고 극복하기 위해선 더 큰 노력이 필요하다. 그래서 되새길 겸 클라이밍 일지를 작성해보려고 한다. 다음부턴 좀 더 기술적인 부분들에 대해 정리해 보겠다. 그럼 이만 운동하러.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;체험을 시켜주었던 누군가의 레벨링이다. 빵 &gt; 밤빵 &gt; 왕밤빵 순으로 올라간다고 한다.&lt;/p&gt;
+&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[react lazyloading 이미지 컴포넌트 구현하기]]></title><description><![CDATA[…]]></description><link>https://nukeguys.github.io/dev/react-lazyimage/</link><guid isPermaLink="false">https://nukeguys.github.io/dev/react-lazyimage/</guid><pubDate>Sun, 06 Oct 2019 02:39:02 GMT</pubDate><content:encoded>&lt;p&gt;웹의 성능을 올리는 데는 다양한 방법들이 있다. 렌더링을 최적화 하거나 리소스 크기를 최소화 한다. 그리고 가능하다면 리소스의 사용이나 로딩을 필요한 시점까지 연기하거나 비동기로 처리한다. 웹에서 사용하는 리소스들 중 많은 크기를 차지하는 것 중의 하나가 이미지이다. 아무리 최적화를 하고 크기를 줄이더라도 이미지 수가 어느정도 증가하면 로딩에 오랜 시간이 걸릴 수 밖에 없다. 이를 방지하기 위해 ATF&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 영역만 먼저 로딩 하고 나머지는 필요한 시점에 로딩시키는 lazyloading을 많이 사용한다.&lt;/p&gt;
 &lt;p&gt;웹에서 이미지를 lazyloading 시키는 방법도 여러가지가 있는데 구글 개발자 사이트(&lt;a href=&quot;https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/?hl=ko&quot;&gt;이미지 및 동영상의 지연 로딩&lt;/a&gt;)에 보면 관련된 설명을 개념부터 방법까지 친절하게 해주고 있다.&lt;/p&gt;
 &lt;p&gt;이 중에서 적용이 쉽고 여러모로 편리한 &lt;code&gt;intersection observer&lt;/code&gt;를 사용하는 방법을 정리해 본다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;intersection observer&lt;/code&gt;는 MDN(&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API&quot;&gt;Intersection Observer&lt;/a&gt;)에서 확인해도 되고, 구글에 검색하면 친절하게 설명되어 있는 글들이 많다. 간단히 설명하면 이름에서 알 수 있듯이 지정된 영역에 대해 교차(intersection) 했는지를 감지하고 해당 시점에 원하는 작업을 할 수 있게 해준다. 안타깝게도 모든 버전의 브라우저에서 지원하지 않고 특히 IE에서는 지원조차 하지 않는다. 다행히 W3C에서 &lt;a href=&quot;https://github.com/w3c/IntersectionObserver/tree/master/polyfill&quot;&gt;polyfill&lt;/a&gt;을 지원해 준다. 하지만 브라우저마다 동작이 조금씩 다를 수 있다고 하니 주의해서 사용하자.&lt;/p&gt;
@@ -32,7 +55,7 @@
 };
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;전체 코드와 동작은 아래에서 확인할 수 있다. 눈으로 확인할 수 있도록 &lt;code&gt;threshold&lt;/code&gt;를 0.5로 설정했다. 즉 이미지의 절반이 화면에서 나타날 때 로드된다. 스크롤을 천천히 내리면서 확인해보자.&lt;/p&gt;
-&lt;p&gt;&lt;iframe src=&quot;https://codesandbox.io/embed/lazyloading-image-59dxt?autoresize=1&amp;fontsize=14&amp;module=%2Fsrc%2FImage.tsx&amp;view=preview&quot; style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;iframe src=&quot;https://codesandbox.io/embed/lazyloading-image-59dxt?autoresize=1&amp;fontsize=14&amp;module=%2Fsrc%2FImage.tsx&quot; style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;p&gt;위의 방식도 동작엔 문제가 없지만, 각 Image 컴포넌트 마다 &lt;code&gt;IntersectionObserver&lt;/code&gt;를 생성하고 있다. 성능상 얼마나 큰 차이가 있을지는 벤치마킹을 해봐야겠지만 이미지가 많은 경우 매번 생성을 하는건 비효율 적으로 보인다. 따라서 전역적으로 하나만 두고 계속 사용하도록 수정하는 것이 좋아보인다.&lt;/p&gt;
 &lt;p&gt;우선 observer를 컴포넌트 밖으로 분리하자.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;const Image = ({ src }: { src: string }) =&gt; {
@@ -83,7 +106,7 @@ let observer: IntersectionObserver | null = null;
 };
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;최종 코드와 동작은 아래에서 확인하자.&lt;/p&gt;
-&lt;p&gt;&lt;iframe src=&quot;https://codesandbox.io/embed/image2-v7ii7?autoresize=1&amp;fontsize=14&amp;module=%2Fsrc%2FImage.tsx&amp;view=preview&quot; style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;iframe src=&quot;https://codesandbox.io/embed/image2-v7ii7?autoresize=1&amp;fontsize=14&amp;module=%2Fsrc%2FImage.tsx&quot; style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;p&gt;처음 lazyloading을 구현할 땐 라이브러리도 고려해보고 방법도 많이 찾아봤었다. 그리고 지금은 위의 방법과 비슷하게 직접 구현해서 사용하고 있다. 코드양은 얼마 되지 않지만 결과를 내는데 까지 적지 않은 시간과 노력을 들였고 그만큼 결과적으로 만족스럽다. (뭐든지 처음이 어렵지...) 조금 더 나은 웹을 위해 하나씩 더 알아가보자.&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
 &lt;hr&gt;
