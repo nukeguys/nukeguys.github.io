@@ -3,53 +3,48 @@
 그래서 페이스북 플러그인 대신 입맛에 맞게 UI를 변경하고 싶을 때는 페이스북에서 제공하는 그래프 API…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="nukeguys"/><meta data-react-helmet="true" name="twitter:title" content="페이스북 댓글 플러그인 스크래핑하기"/><meta data-react-helmet="true" name="twitter:description" content="웹에 페이스북 플러그인을 붙여놓게 되면 데이터는 페이스북에 쌓이게 되고 다시 가져올 수가 없다. (데이터를 추출해서 별도로 저장하면 법적인 문제가 생긴다고 한다.)
 그래서 페이스북 플러그인 대신 입맛에 맞게 UI를 변경하고 싶을 때는 페이스북에서 제공하는 그래프 API…"/><meta data-react-helmet="true" name="google-site-verification" content="Qa32yaZLkgQI9TZcxVmVnp12wR0LusDyVoimvgBzENI"/><meta data-react-helmet="true" name="naver-site-verification" content="1450bea46de74e3e5ae8438654c716209f5e5722"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link as="script" rel="preload" href="/webpack-runtime-b5f5bf94c4dc5dfa5751.js"/><link as="script" rel="preload" href="/app-16a2b528fc5199f62f8a.js"/><link as="script" rel="preload" href="/styles-e058afd9de4128f4e36f.js"/><link as="script" rel="preload" href="/commons-f5c8068a30877d37e9e9.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-tsx-058b1e8e4b9b280abf60.js"/><link as="fetch" rel="preload" href="/page-data/dev/scrap-facebook-comment/page-data.json" crossorigin="anonymous"/></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><section class="hero"><div class="hero-head"><nav id="header" class="navbar has-background-white" role="navigation" aria-label="main navigation"><div class="navbar-brand"><a class="navbar-item is-uppercase has-text-weight-bold is-size-7" href="/">nukeguys blog</a><a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div><div class="navbar-menu"><div class="navbar-end"><a class="navbar-item is-size-7" href="/dev">DEV</a><div class="vertical-divider"><div class="divider"></div></div><a class="navbar-item is-size-7" href="/life">LIFE</a><div class="vertical-divider"><div class="divider"></div></div><a class="navbar-item is-size-7" href="/book">BOOK</a><div class="vertical-divider"><div class="divider"></div></div><a class="navbar-item is-size-7" href="/climbing">CLIMBING</a><div class="vertical-divider"><div class="divider"></div></div></div></div></nav></div><main class="container is-desktop"><div class="hero-body is-paddingless"><section id="blog-post"><div class="has-text-weight-semibold is-size-3 is-size-4-mobile">페이스북 댓글 플러그인 스크래핑하기</div><div class="is-size-7 is-size-7-mobile">2019/08/25 00:25</div><div class="summary is-size-6 is-size-6-mobile">python + pyppeteer로 웹 스크래핑 맛 보기</div><div class="tags"><span class="tag">#<!-- -->acrapping</span><span class="tag">#<!-- -->crawling</span><span class="tag">#<!-- -->python</span><span class="tag">#<!-- -->pyppeteer</span><span class="tag">#<!-- -->facebook</span><span class="tag">#<!-- -->comment</span></div><article class="content"><p>웹에 페이스북 플러그인을 붙여놓게 되면 데이터는 페이스북에 쌓이게 되고 다시 가져올 수가 없다. (데이터를 추출해서 별도로 저장하면 법적인 문제가 생긴다고 한다.)
 그래서 페이스북 플러그인 대신 입맛에 맞게 UI를 변경하고 싶을 때는 페이스북에서 제공하는 <a href="https://developers.facebook.com/docs/graph-api?locale=ko_KR">그래프 API</a>를 사용해야 한다.</p>
-<pre><code>https://graph.facebook.com/{object-id}/comments
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">https://graph.facebook.com/{object-id}/comments
 or
-https://graph.facebook.com/comments?id={object-id}
-</code></pre>
+https://graph.facebook.com/comments?id={object-id}</code></pre></div>
 <p>여기서 문제는 가져올 페이지의 <code>object-id</code>가 필요하다는 것이다.
-별도로 알 수 있는 방법이 없어서(찾지 못했다...) 직접 찾아내야 한다. 플러그인에서 댓글의 작성시간을 누르면 새로운 페이지가 나오는데 여기에서 주소표시줄을 보면 <code>fb_comment_id</code>가 아래의 예시처럼 보인다.</p>
-<pre><code>&#x26;fb_comment_id=1234567890123456_2197257797049450
-</code></pre>
+별도로 알 수 있는 방법이 없어서(찾지 못했다…) 직접 찾아내야 한다. 플러그인에서 댓글의 작성시간을 누르면 새로운 페이지가 나오는데 여기에서 주소표시줄을 보면 <code>fb_comment_id</code>가 아래의 예시처럼 보인다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&amp;fb_comment_id=1234567890123456_2197257797049450</code></pre></div>
 <p>여기서 <code>_</code> 앞에 있는 <code>1234567890123456</code> 이 부분이 api 호출에 사용 할 <code>object-id</code>이다. 단순 하나라면 이정도면 충분하다. 하지만 플러그인이 붙어 있는 페이지가 수십 수백개가 넘는다면 일일히 손으로는 불가능하기 때문에 자동화를 할 필요가 생긴다.</p>
 <p>위에서 말한 것 처럼 댓글의 작성일자를 눌렀을 때 <code>object_id</code>가 포함된 경로로 이동되기 때문에, 댓글의 작성일자 태그의 속성을 꺼내오면 될 것 같다. 그래서 간단히 해당 페이지를 긁어서 출력해보자.</p>
-<pre><code class="language-python">from urllib.request import urlopen
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> urllib<span class="token punctuation">.</span>request <span class="token keyword">import</span> urlopen
 
-url = '...'
-html = urlopen(url)
-print(html.read().decode("utf-8"))
-</code></pre>
+url <span class="token operator">=</span> <span class="token string">'...'</span>
+html <span class="token operator">=</span> urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>html<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
 <p>정작 댓글 내용은 보이지 않는다. 이유는 플러그인이 javascript가 실행되어야 하는데 request는 javascript 실행을 하지 못하기 때문이다. 코드를 조금 살펴보면 플러그인인 페이지에 iframe으로 추가되는 것을 알 수 있다. 그래서 iframe의 경로(<code>https://www.facebook.com/plugins/feedback.php?app_id=...</code>)로 다시 한 번 들어가 보면 정확하게 플러그인만 보이는 페이지가 나온다.</p>
 <p>이 페이지를 긁어서 다시 출력해보면 역시나 댓글이 렌더링된 코드들이 보이지 않는다. 이 페이지에서도 로딩된 이후에 javascript를 통해 댓글을 렌더링 하고 있기 때문이다.(코드상 <code>requireLazy</code> 함수가 관련 있는 것으로 추측된다.)</p>
 <p>그래서 렌더링이 될 때까지 기다려야 하는데 이를 위해서 <a href="https://miyakogi.github.io/pyppeteer/">pyppeteer</a>를 사용한다. <code>pyppeteer</code>는 google에서 만든 headless chrome을 사용할 수 있게 해주는 node.js 라이브러리인 <a href="https://pptr.dev/">puppeteer</a>를 python으로 porting한 모듈이다.
 (대신 <a href="https://www.seleniumhq.org/">Selenium</a>을 사용 할 수도 있다.)</p>
-<pre><code class="language-python">from pyppeteer import launch
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> pyppeteer <span class="token keyword">import</span> launch
 
-url = '...'
-browser = await launch()
-page = await browser.newPage()
-await page.goto(url)
-await page.waitForSelector('.pluginSkinLight', {'timeout': 1000})
-bodyHTML = await page.evaluate('() => document.body.innerHTML')
-print(bodyHTML)
-</code></pre>
+url <span class="token operator">=</span> <span class="token string">'...'</span>
+browser <span class="token operator">=</span> <span class="token keyword">await</span> launch<span class="token punctuation">(</span><span class="token punctuation">)</span>
+page <span class="token operator">=</span> <span class="token keyword">await</span> browser<span class="token punctuation">.</span>newPage<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">await</span> page<span class="token punctuation">.</span>goto<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+<span class="token keyword">await</span> page<span class="token punctuation">.</span>waitForSelector<span class="token punctuation">(</span><span class="token string">'.pluginSkinLight'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'timeout'</span><span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+bodyHTML <span class="token operator">=</span> <span class="token keyword">await</span> page<span class="token punctuation">.</span>evaluate<span class="token punctuation">(</span><span class="token string">'() => document.body.innerHTML'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>bodyHTML<span class="token punctuation">)</span></code></pre></div>
 <p>대략 위처럼 테스트해서 코드를 살펴보면 원하던 댓글들이 렌더링되어 있는 것을 볼 수 있다. 여기서 작성 시간에 있는 href만 찾아내면 된다.</p>
 <p>가져온 html을 <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>으로 파싱하면 손쉽게 원하는 태그에서 속성들을 추출할 수 있다.</p>
 <p>하지만 잠시 wait하지 않던 코드를 살펴보자. <code>waitForSelector</code> 부분만 주석처리하고 출력된 코드를 보면, 댓글이 렌더링 되어 있지는 않지만 <code>script</code> 태그 안에 댓글들의 데이터가 얼핏 보인다. 그리고 혹시나 해서 object-id 값을 검색해보면 <code>targetFBID</code>라는 키로 값이 존재하는 것을 알 수 있다.</p>
 <p>즉, 렌더링 되는 것을 기다리지 않고 필요한 데이터는 미리 알 수가 있는 것이다.(플러그인이 react로 작성되어 있는데 사용하는 상태값들이 아닐까 싶다.) 해당 값을 단순 string 매핑으로 찾아 낼 수도 있으나, 코드를 보면 javascript 함수(handleServerJS) 안에서 파라미터로 넘어가는 json 객체안에 데이터들이 포함되어 있다. 따라서 이 부분을 추출해서 json 객체로 변환하면 필요한 다른 데이터들도 추출하기가 쉬워진다.</p>
-<pre><code class="language-python">from pyppeteer import launch
-import json
-import re
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> pyppeteer <span class="token keyword">import</span> launch
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> re
 
-pattern = re.compile(r'handleServerJS\(([^)]+)\)')
+pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r'handleServerJS\(([^)]+)\)'</span><span class="token punctuation">)</span>
 
-bodyHTML = await page.evaluate('() => document.body.innerHTML')
-p = pattern.search(bodyHTML)
-param = json.loads(p.group(1))
-meta = param['require'][4][3][0]['props']['meta']
-id = meta['targetFBID']
-count = meta['totalCount']
-</code></pre>
+bodyHTML <span class="token operator">=</span> <span class="token keyword">await</span> page<span class="token punctuation">.</span>evaluate<span class="token punctuation">(</span><span class="token string">'() => document.body.innerHTML'</span><span class="token punctuation">)</span>
+p <span class="token operator">=</span> pattern<span class="token punctuation">.</span>search<span class="token punctuation">(</span>bodyHTML<span class="token punctuation">)</span>
+param <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>p<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+meta <span class="token operator">=</span> param<span class="token punctuation">[</span><span class="token string">'require'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'props'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'meta'</span><span class="token punctuation">]</span>
+<span class="token builtin">id</span> <span class="token operator">=</span> meta<span class="token punctuation">[</span><span class="token string">'targetFBID'</span><span class="token punctuation">]</span>
+count <span class="token operator">=</span> meta<span class="token punctuation">[</span><span class="token string">'totalCount'</span><span class="token punctuation">]</span></code></pre></div>
 <p>간단히 정리한 코드기 때문에 자동화를 위한 입출력이나 예외처리, 속도를 조금 올리기 위해 asyncio등을 적용해주면 간단히 쓰기에는 충분해진다.</p></article><nav class="level"><div class="level-left"><a rel="prev" href="/life/nothing-weekend/">← <!-- -->아무 것도 하지 않은 주말</a></div><div class="level-right"><a rel="next" href="/life/standstill/">제자리 걸음<!-- --> →</a></div></nav></section><div></div></div><div class="hero-footer"><footer id="footer" class="footer has-text-grey is-size-7"><p><a class="icon" href="https://github.com/nukeguys"><i class="fa fa-github fa-lg"></i></a><a class="icon" href="https://www.linkedin.com/in/seung-kyu-sung-42695241"><i class="fa fa-linkedin fa-lg"></i></a><a class="icon" href="mailto:nukeguys0@gmail.com"><i class="fa fa-envelope fa-lg"></i></a><a class="icon" href="/rss.xml"><i class="fa fa-rss fa-lg"></i></a></p><p class="is-uppercase">© 2018 <a href="/about ">nukeguys</a> All right reserved. Built with<!-- --> <a href="https://www.gatsbyjs.org/">Gatsby.js</a>+<a href="https://bulma.io/">Bulma</a></p></footer></div></main></section></div></div><script>
   
   
